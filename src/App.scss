@@ -1,0 +1,158 @@
+// Imports
+@import "./styles/partials/base";
+
+// Variables
+$border-lightgray: 1px solid lightgray;
+
+// Shared styles
+%button {
+  border: none;
+  background-color: #008cba; /* Blue */
+  color: white;
+  display: inline-block;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  width: 80px;
+}
+%UpdateShared {
+  font-size: 13px;
+  color: #fff;
+}
+
+// Mixins
+@mixin HideSection() {
+  display: none;
+}
+@mixin ShowSection() {
+  display: inline-block;
+}
+@mixin setfontSize($fontSize: 15px) {
+  font-size: $fontSize;
+}
+
+// Styles
+.App {
+  text-align: center;
+  left: 50px;
+  margin: 3% 28.3% 0 28.3%;
+  padding: 10px;
+  // list
+  .List {
+    border: $border-lightgray;
+    padding: 10px;
+    div h1 {
+      margin-block-start: 0;
+    }
+    .HomeButton {
+      @extend %button;
+      @include setfontSize;
+      margin-top: 10px;
+    }
+    .HideSortOptions {
+      display: none;
+    }
+    .SortOptions {
+      background: aliceblue;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+      margin-top: 10px;
+
+      .SortType {
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+      }
+      p {
+        display: inline;
+      }
+      input {
+        margin-right: 10px;
+      }
+      label {
+        margin-right: 5px;
+      }
+    }
+    .ListItem {
+      border-bottom: $border-lightgray;
+      padding: 10px;
+      margin-top: 0px;
+    }
+    // shipment detail
+    .ShipmentDetail {
+      border: $border-lightgray;
+      div {
+        border-bottom: $border-lightgray;
+        margin-top: 10px;
+        div div.ShowEdit {
+          margin-bottom: 10px;
+        }
+      }
+      div:last-child {
+        border-bottom: none;
+      }
+
+      // button
+      .HideEdit {
+        @include HideSection();
+      }
+      .ShowEdit {
+        @include ShowSection();
+
+        .Update {
+          @extend %UpdateShared;
+          margin-right: 10px;
+          background-color: darkred;
+        }
+        .Cancel {
+          @extend %UpdateShared;
+          background-color: green;
+        }
+      }
+      .ShowEdit.Edit {
+        @include setfontSize;
+        margin-bottom: 10px;
+        color: black;
+        background-color: orange;
+        border: none;
+        border-radius: 12px;
+        padding: 5px;
+        width: 65px;
+      }
+    }
+    // pagination
+    .Pagination {
+      padding: 10px 0;
+      background-color: aliceblue;
+      .hidePagination {
+        display: none;
+      }
+      .Disabled {
+        @extend %button;
+        @include setfontSize;
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+      .Enabled {
+        @extend %button;
+        @include setfontSize;
+      }
+      .CurrentPage {
+        display: inline;
+        padding: 15px;
+        font-size: 25px;
+      }
+    }
+  }
+  // search
+  .Search {
+    align-items: flex-start;
+    display: flex;
+    padding: 10px 0 10px 0;
+    input {
+      width: 100%;
+      margin-right: 10px;
+    }
+  }
+}
