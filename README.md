@@ -34,7 +34,7 @@ npm run server
 - [Use cases](#use-cases)
 - [How to run API server](#how-to-run-api-server)
 
-## Business need
+## Functionality
 
 The main goal is for the user to check the shipments at a glance. This allows users to take faster decisions and plan ahead of time.
 
